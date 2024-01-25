@@ -20,6 +20,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     re_path('swagger/', schema_view.with_ui('swagger', cache_timeout=0),name='schema_swagger_ui'),  #<-- Here
     re_path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),name='schema-redoc'),  #<-- Here
+    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     re_path('admin/', admin.site.urls),
     re_path('', include('myapiapp.urls')),
 ]
